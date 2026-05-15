@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Periodic Table</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ── HEADER ── -->
+  <div id="header">
+    <h1>Periodic Table</h1>
+    <span id="header-sub">118 Elements · Temperature Phase Simulator</span>
+  </div>
+
+  <!-- ── INFO PANEL ── -->
+  <div id="info-panel">
+    <div id="element-card">
+      <div id="el-number">74</div>
+      <div id="el-electrons">2<br>8<br>18<br>32<br>12<br>2</div>
+      <div id="el-symbol">W</div>
+      <div id="el-name">Tungsten</div>
+      <div id="el-mass">183.84</div>
+      <div id="el-state-badge" class="solid">SOLID</div>
+    </div>
+
+    <div id="props-grid">
+      <div class="prop-row"><span class="prop-label">Series</span><span class="prop-value" id="p-series">Transition metals</span></div>
+      <div class="prop-row"><span class="prop-label">Melting point</span><span class="prop-value" id="p-melt">3,422 °C</span></div>
+      <div class="prop-row"><span class="prop-label">Density STP</span><span class="prop-value" id="p-density">19,250 kg/m³</span></div>
+      <div class="prop-row"><span class="prop-label">State at RT</span><span class="prop-value" id="p-state">Solid</span></div>
+      <div class="prop-row"><span class="prop-label">Boiling point</span><span class="prop-value" id="p-boil">5,555 °C</span></div>
+      <div class="prop-row"><span class="prop-label">Thermal cond.</span><span class="prop-value" id="p-conduct">170 W/mK</span></div>
+      <div class="prop-row"><span class="prop-label">Atomic weight</span><span class="prop-value" id="p-weight">183.84 u</span></div>
+      <div class="prop-row"><span class="prop-label">Electron affinity</span><span class="prop-value" id="p-ea">78.6 kJ/mol</span></div>
+      <div class="prop-row"><span class="prop-label">Specific heat</span><span class="prop-value" id="p-heat">132 J/kgK</span></div>
+      <div class="prop-row"><span class="prop-label">Energy levels</span><span class="prop-value" id="p-levels">2,8,18,32,12,2</span></div>
+      <div class="prop-row"><span class="prop-label">1st Ionization</span><span class="prop-value" id="p-ion">770 kJ/mol</span></div>
+      <div class="prop-row"><span class="prop-label">Universe abund.</span><span class="prop-value" id="p-abund">5.0E-8 %</span></div>
+      <div class="prop-row"><span class="prop-label">Electronegativity</span><span class="prop-value" id="p-en">2.36</span></div>
+      <div class="prop-row"><span class="prop-label">Calc. radius</span><span class="prop-value" id="p-radius">193 pm</span></div>
+      <div class="prop-row"><span class="prop-label">Discovered</span><span class="prop-value" id="p-disc">1783 AD</span></div>
+    </div>
+  </div>
+
+  <!-- ── TEMPERATURE SLIDER ── -->
+  <div id="temp-bar">
+    <span id="temp-label">TEMPERATURE</span>
+
+    <div id="slider-wrap">
+      <button id="btn-minus">−</button>
+      <input type="range" id="temp-slider" min="0" max="6000" step="1" value="3186">
+      <button id="btn-plus">+</button>
+    </div>
+
+    <div class="temp-display">
+      <div class="temp-unit">
+        <div class="temp-val" id="disp-c">2912.9</div>
+        <div class="temp-lbl">°C</div>
+      </div>
+      <div class="temp-unit">
+        <div class="temp-val" id="disp-f">5275.2</div>
+        <div class="temp-lbl">°F</div>
+      </div>
+      <div class="temp-unit">
+        <div class="temp-val" id="disp-k">3186</div>
+        <div class="temp-lbl">K</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── LEGEND ── -->
+  <div id="legend">
+    <div class="legend-item" data-cat="hydrogen"><div class="legend-dot" style="background:#5c1a1a;border:1px solid #a33;"></div><span class="legend-label">Hydrogen</span></div>
+    <div class="legend-item" data-cat="alkali"><div class="legend-dot" style="background:#5c2d0d;border:1px solid #a0500a;"></div><span class="legend-label">Alkali metals</span></div>
+    <div class="legend-item" data-cat="alkaline"><div class="legend-dot" style="background:#5c3a0a;border:1px solid #b07010;"></div><span class="legend-label">Alkaline earth</span></div>
+    <div class="legend-item" data-cat="transition"><div class="legend-dot" style="background:#0d2240;border:1px solid #1a5f8a;"></div><span class="legend-label">Transition metals</span></div>
+    <div class="legend-item" data-cat="post-transition"><div class="legend-dot" style="background:#0e3320;border:1px solid #27ae60;"></div><span class="legend-label">Post-transition</span></div>
+    <div class="legend-item" data-cat="metalloid"><div class="legend-dot" style="background:#0a2e2b;border:1px solid #16a085;"></div><span class="legend-label">Metalloids</span></div>
+    <div class="legend-item" data-cat="nonmetal"><div class="legend-dot" style="background:#4a2e08;border:1px solid #d4a017;"></div><span class="legend-label">Nonmetals</span></div>
+    <div class="legend-item" data-cat="halogen"><div class="legend-dot" style="background:#0e3320;border:1px solid #2ecc71;"></div><span class="legend-label">Halogens</span></div>
+    <div class="legend-item" data-cat="noble"><div class="legend-dot" style="background:#0a2e38;border:1px solid #1abc9c;"></div><span class="legend-label">Noble gases</span></div>
+    <div class="legend-item" data-cat="lanthanide"><div class="legend-dot" style="background:#2d0f2a;border:1px solid #8e44ad;"></div><span class="legend-label">Lanthanides</span></div>
+    <div class="legend-item" data-cat="actinide"><div class="legend-dot" style="background:#1e0540;border:1px solid #6c3483;"></div><span class="legend-label">Actinides</span></div>
+    <div class="legend-item" data-cat="unknown"><div class="legend-dot" style="background:#1a1a1a;border:1px solid #555;"></div><span class="legend-label">Unknown</span></div>
+
+    <div class="state-legend">
+      <div class="state-item"><div class="state-dot sd-solid"></div><span class="state-lbl">Solid</span></div>
+      <div class="state-item"><div class="state-dot sd-liquid"></div><span class="state-lbl">Liquid</span></div>
+      <div class="state-item"><div class="state-dot sd-gas"></div><span class="state-lbl">Gas</span></div>
+    </div>
+  </div>
+
+  <!-- ── TABLE ── -->
+  <div id="table-wrap">
+    <div id="ptable"></div>
+  </div>
+
+</div>
+
+<div id="hover-bg-name"></div>
+
+<style>
+#hover-bg-name {
+  position: fixed; bottom: 14px; right: 20px;
+  font-size: 32px; font-weight: 900;
+  color: rgba(255,255,255,0.04);
+  font-family: 'Barlow Condensed', sans-serif;
+  pointer-events: none; letter-spacing: 3px; text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+</style>
+
+<script src="elements.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
